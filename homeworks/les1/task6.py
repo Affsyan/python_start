@@ -9,4 +9,4 @@ day = 1
 while max_kilometer >= kilometer:
     kilometer += (kilometer*10)/100
     day += 1
-print(f"За {day} дней")
+print(f"на {day}-й день спортсмен достиг результата — не менее {max_kilometer} км")
