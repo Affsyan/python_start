@@ -11,7 +11,3 @@ while user_number > 0:
         max_number = user_number%10
     user_number = user_number//10
 print(f"Максимальная цифра в числе {max_number}")
-
-
-
-
