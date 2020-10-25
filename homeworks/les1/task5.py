@@ -14,3 +14,4 @@ if proceeds > costs:
     print("Прибыль фирмы в расчёте на одного сотрудника:",((proceeds-costs)/worker))
 else:
     print("Ваша фирма терпит убытки")
+    
