@@ -3,7 +3,7 @@
 def check(a):
     while True:
         try:
-            a = int(a)
+            a = float(a)
         except ValueError:
             print('Ошибка ввода')
             a = input('Повторно введите число: ')
