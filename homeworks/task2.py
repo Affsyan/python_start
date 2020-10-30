@@ -3,13 +3,22 @@
 # При нечетном количестве элементов последний сохранить на своем месте.
 # Для заполнения списка элементов необходимо использовать функцию input().
 
-length_list = int(input('Введите длинну списка: '))
+while True:
+    length_list = input('Введите длинну списка: ')
+    if length_list.isdigit():
+        length_list = int(length_list)
+        break
+    print('Введите целое число')
 count = 0
 first_list = []
 while count < length_list:
     first_list.insert(count, input(f'Введите {count} элемент списка: '))
     count += 1
+else:
+    count = 0
 print(f'Ваш список {first_list}')
-for i in first_list:
-    first_list[i] =
-print (first_list)
+while count < length_list:
+    element = first_list.pop(count)
+    first_list.insert(count+1, element)
+    count += 2
+print(f'После преобразования {first_list}')
