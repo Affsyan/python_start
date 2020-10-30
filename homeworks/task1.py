@@ -8,4 +8,3 @@ count = 0
 for i in first_list:
     print (first_list[count], type(first_list[count]))
     count += 1
-    
