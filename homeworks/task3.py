@@ -4,24 +4,25 @@
 
 def check(a):
     while True:
-        if len(a) > 2:
+        if len(a) != 3:
             print('Ошибка ввода')
-            a = input('Введите не более 3х чисел через пробел: ').split(' ')
+            a = input('Введите 3 числа через пробел: ').split(' ')
+            if type(a) != tuple:
+                print('Ошибка ввода')
+                a = input('Введите 3 числа через пробел: ').split(' ')
+            continue
         else:
             try:
-                for i
+                a = float(a[0]) + float(a[1]) + float(a[2])
             except ValueError:
                 print('Ошибка ввода')
-                a = input('Введите числа через пробел: ').split(' ')
+                a = input('Введите 3 числа через пробел: ').split(' ')
                 continue
         break
+    print(a)
     return a
 
+user_number = input('Введите 3 числа через пробел: ').split(' ')
+number = check(user_number)
 
-def sum_max (a, b, c, *d):
-    print(a + b + c)
-
-
-user_number = input('Введите числа через пробел: ').split(' ')
-sum_max(*user_number)
 
