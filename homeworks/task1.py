@@ -3,5 +3,12 @@
 # Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
 
 from sys import argv
-work_hours, work_rate, work_award = argv
-salary = lambda work_hours, work_rate, work_award: f'Ваша зарплата {(work_hours*work_rate)+work_award}'
+
+
+def a(*args):
+    print(f'Ваша зарплата {(int(work_hours) * int(work_rate)) + int(work_award)}')
+
+
+_, work_hours, work_rate, work_award = argv
+a(argv)
+
