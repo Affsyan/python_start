@@ -14,14 +14,13 @@ from itertools import cycle
 def cycle_list(n):
     i = 0
     while i != 5:
-        for el in number_list:
-            cycle_list(el)
+        for el in n:
             print(el)
         i += 1
 
 
-_, number = argv
-[print(next(cycle([i]))) for i in range(number, number * 5) if i % 2 == 0]
+# _, number = argv
+# [print(next(cycle([i]))) for i in range(number, number * 5) if i % 2 == 0]
 
 number_list = [1, 2, 3, 4, 5]
 cycle_list(number_list)
