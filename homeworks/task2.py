@@ -9,12 +9,53 @@
 # Проверить на практике полученные на этом уроке знания:
 # реализовать абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property.
 
-class Clothes:
+from abc import ABC, abstractmethod
+import math
 
-    clothes_name = 'name'
 
-    def coat(self):
+class Wear(ABC):
+
+    @property
+    @abstractmethod
+    def consumption(self):
         pass
 
-    def costume(self):
+    @property
+    @abstractmethod
+    def params(self):
         pass
+
+
+class Suit(Wear):
+
+    def __init__(self, name, height):
+        self.height = height
+        self.name = name
+
+    @property
+    def consumption(self):
+        return f"Для пошива {self.name} нужно {math.ceil(2 * self.height + 0.3)} ткани."
+
+    @property
+    def params(self):
+        return
+
+
+class Coat(Wear):
+    def __init__(self, name, size):
+        self.name = name
+        self.size = size
+
+    @property
+    def consumption(self):
+        return f"Для пошива {self.name} нужно {math.ceil(self.size / 6.5 + 0.5)} ткани."
+
+    @property
+    def params(self):
+        return
+
+
+test = Coat('Пальто', 25)
+print(test.consumption)
+test1 = Suit('Пиджак', 170)
+print(test1.consumption)
