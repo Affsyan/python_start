@@ -1,58 +1,61 @@
-class Cell:
-    def __init__(self, cell_count):
-        self.__cell_count = cell_count
+# 3. Реализовать программу работы с органическими клетками. Необходимо создать класс Клетка.
+# В его конструкторе инициализировать параметр, соответствующий количеству клеток (целое число).
+# В классе должны быть реализованы методы перегрузки арифметических операторов: сложение (__add__()),
+# вычитание (__sub__()), умножение (__mul__()), деление (__truediv__()).
+# Данные методы должны применяться только к клеткам и выполнять увеличение, уменьшение,
+# умножение и обычное (не целочисленное) деление клеток, соответственно.
+# В методе деления должно осуществляться округление значения до целого числа.
+# Сложение.
+# Объединение двух клеток. При этом число ячеек общей клетки должно равняться сумме ячеек исходных двух клеток.
+# Вычитание.
+# Участвуют две клетки. Операцию необходимо выполнять только если разность количества ячеек двух клеток больше
+# нуля, иначе выводить соответствующее сообщение.
+# Умножение. Создается общая клетка из двух.
+# Число ячеек общей клетки определяется как произведение количества ячеек этих двух клеток.
+# Деление. Создается общая клетка из двух.
+# Число ячеек общей клетки определяется как целочисленное деление количества ячеек этих двух клеток.
+# В классе необходимо реализовать метод make_order(), принимающий экземпляр класса и количество ячеек в ряду.
+# Данный метод позволяет организовать ячейки по рядам.
+# Метод должен возвращать строку вида *****\n*****\n*****..., где количество ячеек между \n равно переданному аргументу.
+# Если ячеек на формирование ряда не хватает, то в последний ряд записываются все оставшиеся.
+# Например, количество ячеек клетки равняется 12, количество ячеек в ряду — 5. Тогда метод make_order() вернет строку:
+# *****\n*****\n**.
+# Или, количество ячеек клетки равняется 15, количество ячеек в ряду — 5. Тогда метод make_order() вернет строку:
+# *****\n*****\n*****.
 
-    @property
-    def cell_count(self):
-        return self.__cell_count
+
+class Cell:
+    def __init__(self, cell_amount):
+        self.cell_amount = cell_amount
 
     def __add__(self, other):
-        """Сложение. Объединение двух клеток.
-        При этом число ячеек общей клетки должно равняться сумме ячеек исходных двух клеток."""
-
-        return Cell(self.cell_count + other.cell_count)
+        return self.cell_amount + other.cell_amount
 
     def __sub__(self, other):
-        """ todo Вычитание. Участвуют две клетки.
-        Операцию необходимо выполнять только если разность количества ячеек двух клеток больше нуля,
-        иначе выводить соответствующее сообщение.
-        """
-        new_cell = self.cell_count - other.cell_count
-        if new_cell > 0:
-            return Cell(new_cell)
-        raise ValueError('The difference is less than or equal to zero')
-
-    def __truediv__(self, other):
-        """Деление. Создается общая клетка из двух.
-        Число ячеек общей клетки определяется как
-        целочисленное деление количества ячеек этих двух клеток.
-        """
-        return self.__floordiv__(other)
+        cell_amount = self.cell_amount - other.cell_amount
+        if cell_amount > 0:
+            return cell_amount
+        raise ValueError("Значение клеток не может быть меньше нуля")
 
     def __mul__(self, other):
-        """Умножение. Создается общая клетка из двух.
-        Число ячеек общей клетки определяется как произведение количества ячеек этих двух клеток.
-        """
-        return Cell(self.cell_count * other.cell_count)
+        return self.cell_amount * other.cell_amount
 
-    def __floordiv__(self, other):
-        # целочисленное деление
-        return Cell(self.cell_count // other.cell_count)
+    def __truediv__(self, other):
+        return self.cell_amount // other.cell_amount
 
-    def make_order(self, cells_in_lines: int):
-        if not isinstance(cells_in_lines, int):
-            raise TypeError('cells_in_lines int type only')
-        temp = self.cell_count // cells_in_lines
-        temp2 = self.cell_count % cells_in_lines
-        result = '\n'.join(['*' * cells_in_lines + '*' * temp2 if idx + 1 == temp and temp2
-                            else '*' * cells_in_lines
-                            for idx in range(temp)]
-                           )
-        return result
+    def make_order(self, cell_number):
+        cell_str = '*' * self.cell_amount
+        for i in range(0, len(cell_str), cell_number):
+            print(cell_str[i:i + cell_number])
 
 
-if __name__ == '__main__':
-    c1 = Cell(13)
-    c2 = Cell(2)
-    print(c1.make_order(2))
-    print(1)
+test = Cell(11)
+test1 = Cell(5)
+print(test + test1)
+print(test - test1)
+print(test * test1)
+print(test / test1)
+test.make_order(4)
+
+
+
