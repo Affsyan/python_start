@@ -3,3 +3,17 @@
 # При вводе пользователем нуля в качестве делителя программа должна корректно обработать эту ситуацию и
 # не завершиться с ошибкой.
 
+class ZeroDivisionExc(Exception):
+    def __init__(self, txt=''):
+        self.txt = txt
+
+
+try:
+    a = int(input('Введите 1вое число: '))
+    b = int(input('Введите 2рое число: '))
+    if b == 0:
+        raise ZeroDivisionExc('Невозможно поделить на 0')
+except ZeroDivisionExc as e:
+    print(e)
+else:
+    print(a / b)
